@@ -1,0 +1,9 @@
+.idea
+Battleship with Java/*
+!Battleship with Java/task
+*course*info*.yml
+*course*info*.yaml
+
+.gradle
+*build/
+*out/
