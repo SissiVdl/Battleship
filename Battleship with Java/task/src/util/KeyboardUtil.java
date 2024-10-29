@@ -15,14 +15,5 @@ public class KeyboardUtil {
         System.out.println(message);
         return getInput();
     }
-
-    public static List<String> getMultipleInputs(String message, int numberOfLines) {
-        System.out.println(message);
-        List<String> inputs = new ArrayList<>();
-        for (int i = 0; i < numberOfLines; i++) {
-            inputs.add(getInput());
-        }
-        return inputs;
-    }
 }
 
