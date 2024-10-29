@@ -3,6 +3,7 @@ package battleship;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        Field field = new Field();
+        System.out.println(field);
     }
 }
