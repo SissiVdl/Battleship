@@ -35,6 +35,21 @@ public class Field {
         }
     }
 
+    public static String determineParts(String firstCoordinate, String secondCoordinate, String firstCoordNumber, String secondCoordNumber) {
+        StringBuilder parts = new StringBuilder();
+
+        if (firstCoordinate.charAt(0) == secondCoordinate.charAt(0)) {
+            for (int i = Integer.parseInt(firstCoordNumber); i <= Integer.parseInt(secondCoordNumber); i++) {
+                parts.append(firstCoordinate.charAt(0)).append(i).append(" ");
+            }
+        } else {
+            for (int i = firstCoordinate.charAt(0); i <= secondCoordinate.charAt(0); i++) {
+                parts.append((char) i).append(firstCoordNumber).append(" ");
+            }
+        }
+        return parts.toString();
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder(" ");

@@ -37,8 +37,7 @@ public class Main {
             }
         }
         System.out.println("Length:" + field.calculateLength(firstCoordinate, secondCoordinate, firstCoordNumber, secondCoordNumber));
-        System.out.println("Parts:" + field.determineParts(secondCoordinate,firstCoordNumber,secondCoordNumber));
-
+        System.out.println("Parts: " + field.determineParts(firstCoordinate, secondCoordinate, firstCoordNumber, secondCoordNumber));
     }
 }
 
