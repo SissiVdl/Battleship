@@ -33,11 +33,12 @@ public class Main {
         }
 
         // Calculate and print length of the ship
-            if (firstCoordinate.charAt(0) != secondCoordinate.charAt(0)) {
-                System.out.println("Length:" + (Math.abs((secondCoordinate.charAt(0) - firstCoordinate.charAt(0))) + 1));
-            } else {
-                System.out.println("Length:" + (Math.abs((Integer.parseInt(secondCoordNumber) - Integer.parseInt(firstCoordNumber))) + 1));
+        if (firstCoordinate.charAt(0) != secondCoordinate.charAt(0)) {
+            System.out.println("Length:" + (Math.abs((secondCoordinate.charAt(0) - firstCoordinate.charAt(0))) + 1));
+        } else {
+            System.out.println("Length:" + (Math.abs((Integer.parseInt(secondCoordNumber) - Integer.parseInt(firstCoordNumber))) + 1));
         }
+
     }
 }
 }
