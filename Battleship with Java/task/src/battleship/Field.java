@@ -12,7 +12,7 @@ public class Field {
         }
     }
 
-    public String validateCoordinates (String firstCoordinate, String secondCoordinate, String firstCoordNumber, String secondCoordNumber) {
+    public void validateCoordinates (String firstCoordinate, String secondCoordinate, String firstCoordNumber, String secondCoordNumber) {
 
         if ((firstCoordinate.charAt(0) < 'A' || firstCoordinate.charAt(0) > 'J') || (secondCoordinate.charAt(0) < 'A' || secondCoordinate.charAt(0) > 'J')){
             throw new IllegalArgumentException("Error! Letters must be between A and J");
@@ -25,8 +25,14 @@ public class Field {
         if ((firstCoordinate.charAt(0) != secondCoordinate.charAt(0)) && (Integer.parseInt(firstCoordNumber) != Integer.parseInt(secondCoordNumber))){
             throw new IllegalArgumentException("Error! Coordinates must be in same line or row");
         }
+    }
 
-        return "Coordinates are valid";
+    public int calculateLength(String firstCoordinate, String secondCoordinate, String firstCoordNumber, String secondCoordNumber) {
+        if (firstCoordinate.charAt(0) != secondCoordinate.charAt(0)) {
+            return Math.abs((secondCoordinate.charAt(0) - firstCoordinate.charAt(0))) + 1;
+        } else {
+            return Math.abs((Integer.parseInt(secondCoordNumber) - Integer.parseInt(firstCoordNumber))) + 1;
+        }
     }
 
     @Override
@@ -47,5 +53,6 @@ public class Field {
         }
         return builder.toString();
     }
+
 }
 
