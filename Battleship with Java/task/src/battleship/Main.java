@@ -21,8 +21,24 @@ public class Main {
             // Get input
             String coordinates = KeyboardUtil.getInput("Enter the coördinates of the ship:");
 
+
             // Split in 2 coordinates
             String[] splitCoordinates = coordinates.split(" ");
+
+            // Sort coordinates on letter if needed
+            if (splitCoordinates[0].charAt(0) > splitCoordinates[1].charAt(0)) {
+                String temp = splitCoordinates[0];
+                splitCoordinates[0] = splitCoordinates[1];
+                splitCoordinates[1] = temp;
+            }
+
+            // sort coordinates on number if needed
+            if (Integer.parseInt(splitCoordinates[0].substring(1)) > Integer.parseInt(splitCoordinates[1].substring(1))) {
+                String temp = splitCoordinates[0];
+                splitCoordinates[0] = splitCoordinates[1];
+                splitCoordinates[1] = temp;
+            }
+
             firstCoordinate = splitCoordinates[0];
             secondCoordinate = splitCoordinates[1];
             // Get number from coordinates
@@ -40,4 +56,5 @@ public class Main {
         System.out.println("Parts: " + field.determineParts(firstCoordinate, secondCoordinate, firstCoordNumber, secondCoordNumber));
     }
 }
+
 
