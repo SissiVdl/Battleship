@@ -3,6 +3,7 @@ package battleship;
 public class Coordinates {
 
     private final String coordinates;
+
     public Coordinates(String coordinates) {
         this.coordinates = coordinates;
     }

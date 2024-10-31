@@ -15,11 +15,6 @@ public class Field {
                 fieldLayout[i][j] = '~';
             }
         }
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                fieldLayout[i][j] = 'O';
-            }
-        }
     }
 
     public int calculateLength(String firstCoordinate, String secondCoordinate, String firstCoordNumber, String secondCoordNumber) {
