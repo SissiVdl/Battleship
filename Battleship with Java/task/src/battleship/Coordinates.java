@@ -12,13 +12,13 @@ public class Coordinates {
         splitCoordinates();
         sortCoordinates();
         if ((sortCoordinates()[0].charAt(0) < 'A' || sortCoordinates()[0].charAt(0) > 'J') || (sortCoordinates()[1].charAt(0) < 'A' || sortCoordinates()[1].charAt(0) > 'J')){
-            throw new IllegalArgumentException("Error! Letters must be between A and J");
+            throw new IllegalArgumentException("Error! Letters must be between A and J! Try again:");
         }
         if ((Integer.parseInt(sortCoordinates()[0].substring(1)) < 1 || Integer.parseInt(sortCoordinates()[0].substring(1)) > 10) || (Integer.parseInt(sortCoordinates()[1].substring(1)) < 1 || Integer.parseInt(sortCoordinates()[1].substring(1)) > 10)){
-            throw new IllegalArgumentException("Error! Numbers must be between 1 and 10");
+            throw new IllegalArgumentException("Error! Numbers must be between 1 and 10! Try again:");
         }
         if ((sortCoordinates()[0].charAt(0) != sortCoordinates()[1].charAt(0)) && (Integer.parseInt(sortCoordinates()[0].substring(1)) != Integer.parseInt(sortCoordinates()[1].substring(1)))){
-            throw new IllegalArgumentException("Error! Coordinates must be in same line or row");
+            throw new IllegalArgumentException("Error! Coordinates must be in same row or column! Try again:");
         }
     }
 

@@ -45,7 +45,7 @@ public class Field {
         if (isWrongLength(parts, size)) {
             throw new IllegalArgumentException("Error! Wrong length of the " + name + "! Try again:");
         } else if (isTooClose(parts)) {
-            throw new IllegalArgumentException("Error! You placed it too close to another one. Try again:");
+            throw new IllegalArgumentException("Error! You placed it too close to another one! Try again:");
         } else {
             for (String part : parts) {
                 fieldLayout[part.charAt(0) - 'A'][Integer.parseInt(part.substring(1)) - 1] = 'O';

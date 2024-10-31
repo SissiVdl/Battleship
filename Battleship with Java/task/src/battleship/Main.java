@@ -22,21 +22,22 @@ public class Main {
 
         for (Ship allShip : allShips) {
 
-            boolean shipNotPlaced = true;
+            String input = KeyboardUtil.getInput("Enter the coordinates of the " + allShip.getName() + " (" + allShip.getSize() + " cells):");
 
-            while (shipNotPlaced) {
+            Coordinates coordinates = new Coordinates(input);
 
-                String input = KeyboardUtil.getInput("Enter the coördinates of the " + allShip.getName() + " (" + allShip.getSize() + " cells):");
-
-                Coordinates coordinates = new Coordinates(input);
+            boolean invalidCoordinates = true;
+            while (invalidCoordinates) {
 
                 try {
                     coordinates.validateCoordinates();
                     field.placeShip(coordinates.getFirstCoordinate(), coordinates.getSecondCoordinate(), coordinates.getFirstCoordNumber(), coordinates.getSecondCoordNumber(), allShip.getSize(), allShip.getName());
                     System.out.println(field);
-                    shipNotPlaced = false;
+                    invalidCoordinates = false;
                 } catch (IllegalArgumentException iae) {
                     System.out.println(iae.getMessage());
+                    input = KeyboardUtil.getInput();
+                    coordinates = new Coordinates(input);
                 }
             }
         }
