@@ -1,5 +1,7 @@
 package battleship;
 
+import java.util.Arrays;
+
 public class Field {
     private final char[][] fieldLayout  = new char[10][10];
 
@@ -31,10 +33,18 @@ public class Field {
             }
         } else {
             for (int i = 0; i < parts.length; i++) {
-                parts[i] = firstCoordinate.charAt(0) + (Integer.parseInt(firstCoordNumber) + i) + "";
+                parts[i] = firstCoordinate.charAt(0) + String.valueOf(Integer.parseInt(firstCoordNumber) + i);
             }
         }
         return parts;
+    }
+
+    public void placeShip(String firstCoordinate, String secondCoordinate, String firstCoordNumber, String secondCoordNumber) {
+        String[] parts = determineParts(firstCoordinate, secondCoordinate, firstCoordNumber, secondCoordNumber);
+        System.out.println(Arrays.toString(parts));
+        for (String part : parts) {
+            fieldLayout[part.charAt(0) - 'A'][Integer.parseInt(part.substring(1)) - 1] = 'O';
+        }
     }
 
     @Override
