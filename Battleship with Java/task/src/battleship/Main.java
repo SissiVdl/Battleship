@@ -22,9 +22,9 @@ public class Main {
 
         for (Ship allShip : allShips) {
 
-            boolean shipGotPlaced = true;
+            boolean shipNotPlaced = true;
 
-            while (shipGotPlaced) {
+            while (shipNotPlaced) {
 
                 String input = KeyboardUtil.getInput("Enter the coördinates of the " + allShip.getName() + " (" + allShip.getSize() + " cells):");
 
@@ -32,9 +32,9 @@ public class Main {
 
                 try {
                     coordinates.validateCoordinates();
-                    field.placeShip(coordinates.getFirstCoordinate(), coordinates.getSecondCoordinate(), coordinates.getFirstCoordNumber(), coordinates.getSecondCoordNumber());
+                    field.placeShip(coordinates.getFirstCoordinate(), coordinates.getSecondCoordinate(), coordinates.getFirstCoordNumber(), coordinates.getSecondCoordNumber(), allShip.getSize(), allShip.getName());
                     System.out.println(field);
-                    shipGotPlaced = false;
+                    shipNotPlaced = false;
                 } catch (IllegalArgumentException iae) {
                     System.out.println(iae.getMessage());
                 }

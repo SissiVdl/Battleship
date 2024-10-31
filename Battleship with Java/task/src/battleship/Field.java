@@ -39,17 +39,22 @@ public class Field {
         return parts;
     }
 
-    public void placeShip(String firstCoordinate, String secondCoordinate, String firstCoordNumber, String secondCoordNumber) {
+    public void placeShip(String firstCoordinate, String secondCoordinate, String firstCoordNumber, String secondCoordNumber, int size, String name) {
         String[] parts = determineParts(firstCoordinate, secondCoordinate, firstCoordNumber, secondCoordNumber);
-        System.out.println(Arrays.toString(parts));
 
-        if (isTooClose(parts)) {
+        if (isWrongLength(parts, size)) {
+            throw new IllegalArgumentException("Error! Wrong length of the " + name + "! Try again:");
+        } else if (isTooClose(parts)) {
             throw new IllegalArgumentException("Error! You placed it too close to another one. Try again:");
         } else {
             for (String part : parts) {
                 fieldLayout[part.charAt(0) - 'A'][Integer.parseInt(part.substring(1)) - 1] = 'O';
             }
         }
+    }
+
+    private boolean isWrongLength (String[] parts, int size) {
+        return parts.length != size;
     }
 
     private boolean isTooClose(String[] parts) {
