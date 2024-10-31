@@ -1,10 +1,13 @@
 package battleship;
 
 public class Field {
-    private final char[][] fieldLayout;
+    private final char[][] fieldLayout  = new char[10][10];
 
     public Field () {
-        this.fieldLayout = new char[10][10];
+        createField();
+    }
+
+    private void createField() {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 fieldLayout[i][j] = '~';
@@ -20,19 +23,18 @@ public class Field {
         }
     }
 
-    public static String determineParts(String firstCoordinate, String secondCoordinate, String firstCoordNumber, String secondCoordNumber) {
-        StringBuilder parts = new StringBuilder();
-
-        if (firstCoordinate.charAt(0) == secondCoordinate.charAt(0)) {
-            for (int i = Integer.parseInt(firstCoordNumber); i <= Integer.parseInt(secondCoordNumber); i++) {
-                parts.append(firstCoordinate.charAt(0)).append(i).append(" ");
+    public String[] determineParts(String firstCoordinate, String secondCoordinate, String firstCoordNumber, String secondCoordNumber) {
+        String[] parts = new String[calculateLength(firstCoordinate, secondCoordinate, firstCoordNumber, secondCoordNumber)];
+        if (firstCoordinate.charAt(0) != secondCoordinate.charAt(0)) {
+            for (int i = 0; i < parts.length; i++) {
+                parts[i] = (char)(firstCoordinate.charAt(0) + i) + firstCoordNumber;
             }
         } else {
-            for (int i = firstCoordinate.charAt(0); i <= secondCoordinate.charAt(0); i++) {
-                parts.append((char) i).append(firstCoordNumber).append(" ");
+            for (int i = 0; i < parts.length; i++) {
+                parts[i] = firstCoordinate.charAt(0) + (Integer.parseInt(firstCoordNumber) + i) + "";
             }
         }
-        return parts.toString();
+        return parts;
     }
 
     @Override

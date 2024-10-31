@@ -11,6 +11,7 @@ public class Main {
         // Get input and keep asking for input until valid input is given
         boolean noValidInputYet = true;
         Coordinates coordinates = null;
+
         while (noValidInputYet) {
 
             // Get and validate input

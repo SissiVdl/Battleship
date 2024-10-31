@@ -22,8 +22,7 @@ public class Coordinates {
     }
 
     public String[] splitCoordinates() {
-        String[] splitCoordinates = coordinates.split(" ");
-        return splitCoordinates;
+        return coordinates.split(" ");
     }
 
     public String[] sortCoordinates() {
