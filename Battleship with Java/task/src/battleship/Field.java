@@ -15,6 +15,11 @@ public class Field {
                 fieldLayout[i][j] = '~';
             }
         }
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                fieldLayout[i][j] = 'O';
+            }
+        }
     }
 
     public int calculateLength(String firstCoordinate, String secondCoordinate, String firstCoordNumber, String secondCoordNumber) {
@@ -42,9 +47,38 @@ public class Field {
     public void placeShip(String firstCoordinate, String secondCoordinate, String firstCoordNumber, String secondCoordNumber) {
         String[] parts = determineParts(firstCoordinate, secondCoordinate, firstCoordNumber, secondCoordNumber);
         System.out.println(Arrays.toString(parts));
-        for (String part : parts) {
-            fieldLayout[part.charAt(0) - 'A'][Integer.parseInt(part.substring(1)) - 1] = 'O';
+
+        if (isTooClose(parts)) {
+            throw new IllegalArgumentException("Error! You placed it too close to another one. Try again:");
+        } else {
+            for (String part : parts) {
+                fieldLayout[part.charAt(0) - 'A'][Integer.parseInt(part.substring(1)) - 1] = 'O';
+            }
         }
+    }
+
+    private boolean isTooClose(String[] parts) {
+        for (String part : parts) {
+            int row = part.charAt(0) - 'A';
+            int col = Integer.parseInt(part.substring(1)) - 1;
+
+            if (fieldLayout[row][col] == 'O') {
+                return true;
+            }
+            if (row > 0 && fieldLayout[row - 1][col] == 'O') {
+                return true;
+            }
+            if (row < 9 && fieldLayout[row + 1][col] == 'O') {
+                return true;
+            }
+            if (col > 0 && fieldLayout[row][col - 1] == 'O') {
+                return true;
+            }
+            if (col < 9 && fieldLayout[row][col + 1] == 'O') {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

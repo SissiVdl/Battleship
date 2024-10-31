@@ -2,6 +2,8 @@ package battleship;
 
 import util.KeyboardUtil;
 
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -26,10 +28,17 @@ public class Main {
                 System.out.println(iae.getMessage());
             }
         }
-        // Determine length of ship
-        System.out.println("Length:" + field.calculateLength(coordinates.getFirstCoordinate(), coordinates.getSecondCoordinate(), coordinates.getFirstCoordNumber(), coordinates.getSecondCoordNumber()));
-        // Determine parts of ship
-        System.out.println("Parts: " + field.determineParts(coordinates.getFirstCoordinate(), coordinates.getSecondCoordinate(), coordinates.getFirstCoordNumber(), coordinates.getSecondCoordNumber()));
+
+        // System.out.println("Valid input: " + coordinates.getCoordinates());
+        // System.out.println("Length:" + field.calculateLength(coordinates.getFirstCoordinate(), coordinates.getSecondCoordinate(), coordinates.getFirstCoordNumber(), coordinates.getSecondCoordNumber()));
+        // System.out.println("Parts:" + Arrays.toString(field.determineParts(coordinates.getFirstCoordinate(), coordinates.getSecondCoordinate(), coordinates.getFirstCoordNumber(), coordinates.getSecondCoordNumber())));
+
+        try {
+            field.placeShip(coordinates.getFirstCoordinate(), coordinates.getSecondCoordinate(), coordinates.getFirstCoordNumber(), coordinates.getSecondCoordNumber());
+            System.out.println(field);
+        } catch (IllegalArgumentException iae) {
+            System.out.println(iae.getMessage());
+        }
     }
 }
 
